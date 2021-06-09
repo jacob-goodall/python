@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+#not needed to make graph just for table
 from tabulate import tabulate
 global DT, T, graphs
 
@@ -23,21 +24,26 @@ graphs2 = []
 Q = 0
 T = 0
 CM = 0
-#Inputs
-S = input("Supply Voltage (V):")
-C = input("Capacitance Value (F):")
-DT = input("Time Interval (S):")
-R = input("Resistance Value (Ω): ")
-#Making INT's so it doesn't break
-S = float(S)
-C = float(C)
-DT = float(DT)
-R = float(R)
+
+#Inputs and error prevention with try except statment
+
+try:
+    S = input("Supply Voltage (V):")
+    C = input("Capacitance Value (F):")
+    DT = input("Time Interval (S):")
+    R = input("Resistance Value (Ω): ")
+    #Making Floats's so it doesn't break
+    S = float(S)
+    C = float(C)
+    DT = float(DT)
+    R = float(R)
+except ValueError:
+    print("Has to be an INT or a Float \n Exiting to Omit Error")
+    quit()
+
 #Time Constant
 RC = R * C
 RT = RC * 5
-print(RC)
-print(RT)
 RT = int(RT)
 
 
@@ -59,9 +65,6 @@ while T < RT:
     Q = Q + DQ
     #Calls Function
     tables()
-
-
-
 
 
 print(tabulate(table))
