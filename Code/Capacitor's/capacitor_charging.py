@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from tabulate import tabulate
+
 global DT, T, graphs
 
 # S = supply voltage Var
@@ -13,31 +14,44 @@ global DT, T, graphs
 # T = time (s)
 # R is Resistance Var
 
-#Initiating Lists
-table = [['Time (s)', 'Voltage difference', 'Capacitor Voltage' , 'Capacitance(F)', 'Resistance', 'Current(A)', 'Charge moved (C)', 'Total Charge (C)']]
+# Initiating Lists
+table = [
+    [
+        "Time (s)",
+        "Voltage difference",
+        "Capacitor Voltage",
+        "Capacitance(F)",
+        "Resistance",
+        "Current(A)",
+        "Charge moved (C)",
+        "Total Charge (C)",
+    ]
+]
 graphs1 = []
 graphs2 = []
-#Initiating Values
+# Initiating Values
 Q = 0
 T = 0
 CM = 0
-#Inputs
+# Inputs
 S = input("Supply Voltage (V):")
 C = input("Capacitance Value (F):")
 DT = input("Time Interval (S):")
 R = input("Resistance Value (Ω): ")
-#Making INT's so it doesn't break
+# Making INT's so it doesn't break
 S = int(S)
 C = int(C)
 DT = int(DT)
 R = int(R)
 
-#Function so it can be callable
+# Function so it can be callable
 def tables():
     table.append([T, VD, CV, C, R, IC, CM, Q])
     graphs1.append(T)
     graphs2.append(VD)
-#Very big for loop
+
+
+# Very big for loop
 for x in range(1000000000000):
     # voltage across capacitor is Q/C
     CV = Q / C
@@ -50,17 +64,17 @@ for x in range(1000000000000):
     # the current changes the amount of charge carried on to the capacitor in the time interval
     DQ = IC * DT
     Q = Q + DQ
-    #Calls Function
+    # Calls Function
     tables()
 
-    #Breaks when VD = 0
-    if VD == 0 : break
-
+    # Breaks when VD = 0
+    if VD == 0:
+        break
 
 
 print(tabulate(table))
 plt.plot(graphs1, graphs2)
-plt.xlabel('Time (s)')
-plt.ylabel('Voltage Diff (V)')
+plt.xlabel("Time (s)")
+plt.ylabel("Voltage Diff (V)")
 
 plt.show()
