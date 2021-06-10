@@ -176,3 +176,5 @@ plt.xlabel("Time (s)")
 plt.ylabel("Voltage Diff (V)")
 
 plt.show()
+
+# Programed By Jacob Goodall https://goodall.one
